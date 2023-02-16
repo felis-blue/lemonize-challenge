@@ -1,9 +1,44 @@
 package model;
 
+import java.util.Collection;
+import java.util.Map;
+import java.util.Optional;
+
 /**
  * The yarn data model
  */
 public class Yarn {
+
+    /** an assortment of example yarn, "database simulation" */
+    private static Map<String, Yarn> map = Map.of(
+            "1", new Yarn("1", "Catania", "blue", 50),
+            "2", new Yarn("2", "Catania", "red", 50),
+            "3", new Yarn("3", "Regia", "uni", 100),
+            "4", new Yarn("4", "Regia", "striped", 100),
+            "5", new Yarn("5", "Whirl", "ocean breeze", 200),
+            "6", new Yarn("6", "Whirl", "moccha time", 200),
+            "7", new Yarn("7", "Whirl", "blueberry muffin", 200));
+
+    /**
+     * Get a list of all yarn data
+     *
+     * @return a Collection of Yarn
+     */
+    public static Collection<Yarn> getAll() {
+        return map.values();
+    }
+
+    /**
+     * Get the yarn data for the given id
+     *
+     * @param id
+     *           the id of the yarn data to be returned
+     * @return on Optional containing the Yarn with the given id, or empty if
+     *         no such Yarn exists
+     */
+    public static Optional<Yarn> getById(String id) {
+        return Optional.ofNullable(map.get(id));
+    }
 
     private final String id;
     private final String name;
