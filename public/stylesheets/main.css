@@ -1,0 +1,16 @@
+html {
+    font-family: system-ui, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#lemonize {
+    height: 1em;
+}
