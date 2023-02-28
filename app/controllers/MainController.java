@@ -5,6 +5,7 @@ import java.util.Optional;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.mvc.Results;
 
 import model.Yarn;
 
@@ -20,7 +21,7 @@ public class MainController extends Controller {
      * @return the index template rendered to HTML
      */
     public Result index() {
-        return ok(views.html.index.render());
+        return Results.ok(views.html.index.render());
     }
 
     /**
@@ -29,7 +30,7 @@ public class MainController extends Controller {
      * @return the list of yarn as JSON
      */
     public Result list() {
-        return ok(Json.toJson(Yarn.getAll()));
+        return Results.ok(Json.toJson(Yarn.getAll()));
     }
 
     /**
@@ -40,7 +41,7 @@ public class MainController extends Controller {
      * @return the yarn item with the given id as JSON
      */
     public Result item(final String id) {
-        Optional<Yarn> yarn = Yarn.getById(id);
-        return yarn.map(y -> ok(Json.toJson(y))).orElse(notFound("No such id"));
+        final Optional<Yarn> yarn = Yarn.getById(id);
+        return yarn.map(y -> Results.ok(Json.toJson(y))).orElse(Results.notFound("No such id"));
     }
 }

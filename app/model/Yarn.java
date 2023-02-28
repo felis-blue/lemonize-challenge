@@ -25,7 +25,7 @@ public class Yarn {
      * @return a Collection of Yarn
      */
     public static Collection<Yarn> getAll() {
-        return map.values();
+        return Yarn.map.values();
     }
 
     /**
@@ -36,8 +36,8 @@ public class Yarn {
      * @return on Optional containing the Yarn with the given id, or empty if
      *         no such Yarn exists
      */
-    public static Optional<Yarn> getById(String id) {
-        return Optional.ofNullable(map.get(id));
+    public static Optional<Yarn> getById(final String id) {
+        return Optional.ofNullable(Yarn.map.get(id));
     }
 
     private final String id;
@@ -45,7 +45,7 @@ public class Yarn {
     private final String color;
     private final int size;
 
-    public Yarn(String id, String name, String color, int size) {
+    public Yarn(final String id, final String name, final String color, final int size) {
         this.id = id;
         this.name = name;
         this.color = color;
@@ -53,19 +53,19 @@ public class Yarn {
     }
 
     public String getId() {
-        return id;
+        return this.id;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public String getColor() {
-        return color;
+        return this.color;
     }
 
     public int getSize() {
-        return size;
+        return this.size;
     }
 
 }
